@@ -98,6 +98,15 @@ module.exports = {
                     exclude: /node_modules/,
                     use: [{ loader: 'babel-loader' }]
                 },
+
+                {
+                    test: /\.(vert|frag)$/,
+                    exclude: /node_modules/,
+                    use:
+                        [
+                            'raw-loader'
+                        ]
+                },
             ]
     }
 }
