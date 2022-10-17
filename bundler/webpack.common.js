@@ -100,7 +100,7 @@ module.exports = {
                 },
 
                 {
-                    test: /\.(vert|frag)$/,
+                    test: /\.(vert|frag|glsl)$/,
                     exclude: /node_modules/,
                     use:
                         [

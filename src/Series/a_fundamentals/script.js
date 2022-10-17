@@ -1,5 +1,5 @@
-import vertexShaderCode from "./shaders/vertex.vert"
-import fragmentShaderCode from "./shaders/fragment.frag"
+import vertexShaderCode from "./shaders/vertex.glsl"
+import fragmentShaderCode from "./shaders/fragment.glsl"
 
 import * as WebGLUtils from "../WebGLUtils/All"
 
