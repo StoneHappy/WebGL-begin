@@ -2,7 +2,7 @@ import vertexShaderCode from "./shaders/vertex.glsl"
 import fragmentShaderCode from "./shaders/fragment.glsl"
 
 import * as WebGLUtils from "../WebGLUtils/All"
-
+import * as twgl from "twgl.js"
 export function a_fundamentals()
 {
   /** @type {HTMLCanvasElement} */
@@ -11,11 +11,10 @@ export function a_fundamentals()
   if(!gl) return;
 
   // create GLSL shaders, upload the GLSL source, compile the shaders
-  var vertexShader = WebGLUtils.createShader(gl, gl.VERTEX_SHADER, vertexShaderCode);
-  var fragmentShader = WebGLUtils.createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderCode);
+  const programInfo = twgl.createProgramInfo(gl, [vertexShaderCode, fragmentShaderCode]);
 
-  // Link the two shaders into a program
-  var program = WebGLUtils.createProgram(gl, vertexShader, fragmentShader);
+  var program = programInfo.program;
+
   // look up where the vertex data needs to go.
   var positionAttributeLocation = gl.getAttribLocation(program, "a_position");
 
@@ -60,7 +59,9 @@ export function a_fundamentals()
   gl.clear(gl.COLOR_BUFFER_BIT);
 
   // Tell it to use our program (pair of shaders)
-  gl.useProgram(program);
+  // gl.useProgram(program);
+  gl.useProgram(programInfo.program);
+  
 
   // Bind the attribute/buffer set we want.
   gl.bindVertexArray(vao);
